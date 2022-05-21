@@ -25,13 +25,14 @@ describe('TransferController', () => {
             new Promise((resolve, reject)=>{
               resolve( {status:true, message: 'successfull'})
           })
+      );
          
     
 
     // const serviceResul = await transferService.Transfer("8734587478", obj)
     // expect(await (await transferService.Transfer("8734587478", obj)).status).toBe(result.status);
-
-     // expect(await (await transferService.Transfer("8734587478", obj)).status).toBe(result.status);
+  //  const expectedResult = result.status
+    expect(await (await transferService.Transfer("8734587478", obj)).status).toBe(result.status);
     });
   });
 });
