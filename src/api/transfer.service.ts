@@ -22,12 +22,16 @@ export class TransferService {
         if (cpuCount > 1) {
             const tasks:any[] = this.AllTasks(sender, body.data)
             await Promise.all([...this.MakeTranser(tasks)])
-            return;
+            return {status:true, message: 'successfull'}
         }
 
         for(let item of body.data) {
             await this._transfer(sender, item.Amount, String(item.AccountNumber))
+            return {status:true, message: 'successfull'}
         }
+
+        return;
+       
     }
 
     private AllTasks(sender, items):any[] {

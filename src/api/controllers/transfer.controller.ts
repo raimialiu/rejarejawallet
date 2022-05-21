@@ -10,6 +10,10 @@ export class TransferController {
     async MakeTransfer(@Body(new ValidationPipe()) body: TransferDTO, @Res() res: Response) 
     {
         console.log("transfer from " + body.senderAccountNumber + " payload " + JSON.stringify(body))
+
+        if(!body.senderAccountNumber) {
+            return res.status(400).send("invalid paramter")
+        }
         const serviceResult = await this.service.Transfer(body.senderAccountNumber, body)
         return res.status(200).send(serviceResult)
     }
